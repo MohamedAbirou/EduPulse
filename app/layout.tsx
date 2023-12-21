@@ -1,14 +1,11 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { constructMetadata } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "EduPulse",
-  description: "EduPulse is a modern learning management platform",
-};
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
