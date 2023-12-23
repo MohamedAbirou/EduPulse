@@ -93,9 +93,11 @@ export const ChaptersList = ({
                     {chapter.title}
                     <div className="ml-auto pr-2 flex items-center gap-x-2">
                       {chapter.isFree && <Badge>Free</Badge>}
-                      <Badge>
-                        {chapter.isPublished ? "Published" : "Draft"}
-                      </Badge>
+                      {chapter.isPublished ? (
+                        <Badge variant="secondary">Published</Badge>
+                      ) : (
+                        <Badge>Draft</Badge>
+                      )}
                       <Pencil
                         className="w-4 h-4 cursor-pointer hover:opacity-75 hover:animate-bounce transition"
                         onClick={() => onEdit(chapter.id)}

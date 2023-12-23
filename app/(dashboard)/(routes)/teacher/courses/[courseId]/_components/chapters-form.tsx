@@ -78,7 +78,7 @@ export const ChaptersForm = ({ initialData }: ChaptersFormProps) => {
   return (
     <div className="relative mt-6 border bg-slate-100 rounded-md p-4">
       {isUpdating && (
-        <div className="absolute h-full w-full bg-rose-500/20 top-0 right-0 rounded-md flex items-center justify-center">
+        <div className="absolute h-full w-full bg-rose-400/20 top-0 right-0 rounded-md flex items-center justify-center">
           <Loader2 className="h-6 w-6 text-rose-400 animate-spin" />
         </div>
       )}
