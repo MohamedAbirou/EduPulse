@@ -14,15 +14,15 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const course = await db.course.findUnique({
+    const courseOwner = await db.course.findUnique({
       where: {
         id: courseId,
         userId,
       },
     });
 
-    if (!course) {
-      return new NextResponse("Not Found", { status: 404 });
+    if (!courseOwner) {
+      return new NextResponse("Unauthorized", { status: 401 });
     }
 
     const unpublishedCourse = await db.course.update({
@@ -35,9 +35,27 @@ export async function PATCH(
       },
     });
 
+    const publishedChapterInCourse = await db.chapter.findMany({
+      where: {
+        courseId,
+        isPublished: true,
+      },
+    });
+
+    if (!publishedChapterInCourse.length) {
+      await db.course.update({
+        where: {
+          id: courseId,
+        },
+        data: {
+          isPublished: false,
+        },
+      });
+    }
+
     return NextResponse.json(unpublishedCourse);
   } catch (error) {
-    console.log("[COURSE_ID_UNPUBLISH]", error);
+    console.log("[CHAPTER_UNPUBLISH]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

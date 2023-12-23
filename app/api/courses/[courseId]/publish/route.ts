@@ -19,25 +19,44 @@ export async function PATCH(
         id: courseId,
         userId,
       },
+      include: {
+        chapters: {
+          include: { muxData: true },
+        },
+      },
     });
 
     if (!course) {
       return new NextResponse("Not Found", { status: 404 });
     }
 
-    const unpublishedCourse = await db.course.update({
+    const hasPublishedChapter = course.chapters.some(
+      (chapter) => chapter.isPublished
+    );
+
+    if (
+      !course.title ||
+      !course.description ||
+      !course.imageUrl ||
+      !course.categoryId ||
+      !hasPublishedChapter
+    ) {
+      return new NextResponse("Missing required fields", { status: 401 });
+    }
+
+    const publishedCourse = await db.course.update({
       where: {
         id: courseId,
         userId,
       },
       data: {
-        isPublished: false,
+        isPublished: true,
       },
     });
 
-    return NextResponse.json(unpublishedCourse);
+    return NextResponse.json(publishedCourse);
   } catch (error) {
-    console.log("[COURSE_ID_UNPUBLISH]", error);
+    console.log("[COURSE_ID_PUBLISH]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
