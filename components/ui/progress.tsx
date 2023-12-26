@@ -2,9 +2,9 @@
 import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
-import { cva } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
 
-const progreessVariant = cva("h-full w-full flex-1 bg-primary transtion-all", {
+const progreessVariants = cva("h-full w-full flex-1 bg-primary transtion-all", {
   variants: {
     variant: {
       default: "bg-rose-400",
@@ -16,10 +16,17 @@ const progreessVariant = cva("h-full w-full flex-1 bg-primary transtion-all", {
   },
 });
 
+export interface ProgressProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof progreessVariants> {}
+
+type CombinedProgressProps = ProgressProps &
+  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>;
+
 const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
->(({ className, value, ...props }, ref) => (
+  CombinedProgressProps
+>(({ className, value, variant, ...props }, ref) => (
   <ProgressPrimitive.Root
     ref={ref}
     className={cn(
@@ -29,7 +36,7 @@ const Progress = React.forwardRef<
     {...props}
   >
     <ProgressPrimitive.Indicator
-      className={cn(progreessVariant({ variant }))}
+      className={cn(progreessVariants({ variant }))}
       style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
     />
   </ProgressPrimitive.Root>

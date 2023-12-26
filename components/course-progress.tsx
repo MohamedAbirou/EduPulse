@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { Progress } from "./ui/progress";
 
 interface CourseProgressProps {
@@ -23,7 +24,16 @@ export const CourseProgress = ({
 }: CourseProgressProps) => {
   return (
     <div>
-      <Progress className="h-2" value={value} />
+      <Progress className="h-2" value={value} variant={variant} />
+      <p
+        className={cn(
+          "font-medium mt-2 text-rose-400",
+          colorByVariant[variant || "default"],
+          sizeByVariant[size || "default"]
+        )}
+      >
+        {Math.round(value)}% Complete
+      </p>
     </div>
   );
 };
