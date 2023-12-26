@@ -28,7 +28,7 @@ coming later...
 - Rich text editor for chapter description
 - Authentication using Clerk
 - ORM using Prisma
-- MySQL database using Planetscale
+- MongoDB
 
 ## Technologies Used
 
@@ -37,6 +37,7 @@ coming later...
 - Tailwind CSS
 - ShadcnUI
 - Prisma ORM
+- Mux
 - Stripe
 
 ## Contributing
