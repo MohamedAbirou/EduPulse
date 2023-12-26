@@ -37,6 +37,7 @@ coming later...
 - Tailwind CSS
 - ShadcnUI
 - Prisma ORM
+- Mux
 - Stripe
 
 ## Contributing
