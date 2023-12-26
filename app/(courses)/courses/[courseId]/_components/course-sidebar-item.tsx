@@ -51,7 +51,7 @@ export const CourseSidebarItem = ({
             isCompleted && "text-emerald-700"
           )}
         />
-        {label}
+        <p className="text-left line-clamp-1">{label}</p>
       </div>
       <div
         className={cn(

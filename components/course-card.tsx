@@ -31,7 +31,7 @@ export const CourseCard = ({
           <Image src={imageUrl} fill className="object-cover" alt={title} />
         </div>
         <div className="flex flex-col pt-2">
-          <div className="text-lg md:text-base font-medium group-hover:text-rose-400 transition line-clamp-2">
+          <div className="text-lg md:text-base line-clamp-1 font-medium group-hover:text-rose-400 transition">
             {title}
           </div>
           <p className="text-xs text-muted-foreground">{category}</p>
