@@ -2,14 +2,14 @@
 
 ## Description
 
-EduPulse is a Learning Management System (LMS). It's built using Next 13 with the App Router, Typescript, TailwindCSS, ShadcnUI, Prisma as an ORM, Stripe for payments.
+EduPulse is a Learning Management System (LMS). It's built using Next 13 with the App Router, Typescript, TailwindCSS, ShadcnUI, Prisma as an ORM, Stripe for payments. and MongoDB for database management.
 
 ![LMS Logo](https://github.com/MohamedAbirou/EduPulse/assets/109366637/754c19f1-cfd9-441c-b7dc-16f1b064e52d)
 
 
 ## Demo
 
-coming later...
+[EduPulse](https://edu-pulse-org.vercel.app/)
 
 ## Features
 
