@@ -9,7 +9,7 @@ EduPulse is a Learning Management System (LMS). It's built using Next 13 with th
 
 ## Demo
 
-coming later...
+(EduPulse)[https://edu-pulse-org.vercel.app/]
 
 ## Features
 
