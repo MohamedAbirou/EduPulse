@@ -39,6 +39,7 @@ EduPulse is a Learning Management System (LMS). It's built using Next 13 with th
 - Prisma ORM
 - Mux
 - Stripe
+- MongoDB
 
 ## Contributing
 
